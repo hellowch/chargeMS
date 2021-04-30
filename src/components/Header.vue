@@ -41,7 +41,7 @@ export default {
   margin: 10px 0;
 }
 .h_header{
-  height: 87px !important;
+  height: 60px !important;
   position: fixed;
   top: 0px;
   left: 0px;

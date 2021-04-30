@@ -12,8 +12,11 @@ import VueAxios from 'vue-axios'
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
-Vue.use(VueAxios, axios)
-
+// Vue.use(VueAxios, axios)
+//全局配置url链接
+axios.defaults.baseURL='https://gank.io';
+// 挂载到vue原型链上
+Vue.prototype.axios = axios;
 
 new Vue({
   router,

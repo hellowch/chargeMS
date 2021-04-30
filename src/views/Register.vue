@@ -1,21 +1,22 @@
 <template>
-  <div id="community">
+  <div id="register">
     <Header></Header>
-    <a>community</a>
+    <a>register</a>
     <Footer></Footer>
   </div>
+
 </template>
 
 <script>
-import Header from '../components/Header'
-import Footer from '../components/Footer'
+//用户注册
+import Header from "../components/Header"
+import Footer from "../components/Footer";
 export default {
-  // 社区界面
   components: {
     Header,
     Footer
   },
-  name: 'Community'
+  name: "Register"
 }
 </script>
 

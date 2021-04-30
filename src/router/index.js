@@ -5,6 +5,7 @@ import Cell from '../views/Cell'
 import Charger from '../views/Charger'
 import Community from '../views/Community'
 import User from '../views/User'
+import Register from '../views/Register'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     }
   ]
 })
