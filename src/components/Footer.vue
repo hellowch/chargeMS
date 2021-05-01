@@ -1,13 +1,12 @@
 <template>
   <div class="m-content">
     <el-footer class="f_footer">
-      <el-menu class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item style="padding-left: 25px;padding-right: 25px" index="1"><el-link href="/#/Cell">电池</el-link></el-menu-item>
-        <el-menu-item style="padding-left: 25px;padding-right: 25px" index="2"><el-link href="/#/Charger">充电桩</el-link></el-menu-item>
-        <el-menu-item index="3"><el-link href="/#/Community">社区</el-link></el-menu-item>
-        <el-menu-item style="padding-left: 34px;padding-right: 34px" index="4"><el-link href="/#/User">我</el-link></el-menu-item>
+      <el-menu class="el-menu-demo" mode="horizontal">
+        <el-menu-item class="menu-style" index="1"><el-link href="/#/Cell">电池</el-link></el-menu-item>
+        <el-menu-item class="menu-style" index="2"><el-link href="/#/Charger">充电</el-link></el-menu-item>
+        <el-menu-item class="menu-style" index="3"><el-link href="/#/Community">社区</el-link></el-menu-item>
+        <el-menu-item class="menu-style" index="4"><el-link href="/#/User">我的</el-link></el-menu-item>
       </el-menu>
-
     </el-footer>
   </div>
 </template>
@@ -38,5 +37,9 @@ export default {
 }
 .el-menu-demo{
   width: 100%;
+}
+.menu-style{
+  padding-left: 27px;
+  padding-right: 27px;
 }
 </style>

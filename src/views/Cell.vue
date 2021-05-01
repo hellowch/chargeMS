@@ -2,7 +2,6 @@
   <div class="cell">
     <Header></Header>
     <a>cell cell cell cell</a>
-    <el-button type="primary" @click="clickTest()">主要按钮</el-button>
     <Footer></Footer>
   </div>
 </template>
@@ -16,24 +15,16 @@ export default {
     Header,
     Footer
   },
-
   name: 'Cell',
+  // data(){
+  //
+  // },
+  created(){
+    // const key = JSON.parse(localStorage.getItem('key'));
+
+  },
   methods: {
-    //按钮点击测试
-    clickTest () {
-      this.axios
-        .get("/api/v2/banners")
-        .then(function (response) {
-          console.log(response.data);
-          console.log(response.status);
-          console.log(response.statusText);
-          console.log(response.headers);
-          console.log(response.config);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+
   }
 }
 </script>

@@ -22,7 +22,7 @@
       </el-main>
 
     </el-container>
-    <Footer></Footer>
+<!--    <Footer></Footer>-->
   </div>
 </template>
 
@@ -66,7 +66,8 @@ export default {
           console.log(response)
           if (response.data.code === 200 && response.data.data.Id != 0) {//如果后端返回的状态码是200
             this.open2();//调用第一个弹窗方法表示登录成功
-            this.$router.replace({//路由替换为index
+            localStorage.setItem('key',JSON.stringify(response.data.data))
+            this.$router.replace({
               path: '/cell'
             });
           }

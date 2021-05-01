@@ -7,11 +7,10 @@
             <div class="block"><el-avatar :size="35" :src="circleUrl"></el-avatar></div>
           </div>
         </el-col>
-
-        <div class="icon-warp">
-          <i class="el-icon-search"></i>
-          <i style="margin-left: 10px" class="el-icon-message"></i>
-        </div>
+<!--        <div class="icon-warp">-->
+<!--          <i class="el-icon-search"></i>-->
+<!--          <i style="margin-left: 10px" class="el-icon-message"></i>-->
+<!--        </div>-->
       </el-row>
 
     </el-header>
@@ -27,7 +26,20 @@ export default {
     return {
       circleUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
     }
+  },
+  mounted:function(){
+    this.getavatar();//需要触发的函数
+  },
+  methods: {
+    getavatar(){
+      if (this.$route.path != '/register' && this.$route.path != '/'){
+        var model = JSON.parse(localStorage.getItem('key'))
+        // console.log(model.Avatar)
+        this.circleUrl = model.Avatar
+      }
+    }
   }
+
 }
 </script>
 
