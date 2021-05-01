@@ -64,13 +64,13 @@ export default {
         })
         .then((response) => {//回调函数当post成功后执行
           console.log(response)
-          if (response.data.code === 200) {//如果后端返回的状态码是200
+          if (response.data.code === 200 && response.data.data.Id != 0) {//如果后端返回的状态码是200
             this.open2();//调用第一个弹窗方法表示登录成功
             this.$router.replace({//路由替换为index
               path: '/cell'
             });
           }
-          if (response.data.code === 400 ) {
+          if (response.data.code != 200 || response.data.data.Id == 0) {
             this.open3()
           }
         })
@@ -80,7 +80,8 @@ export default {
         });
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      formName.username = 'wch01'
+      formName.password = '123456'
     },
     open2() {
       this.$message({
