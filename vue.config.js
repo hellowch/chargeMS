@@ -12,5 +12,6 @@ module.exports = {
         remUnit: 75//设计稿的宽度的1/10
       })
   },
+
 }
 

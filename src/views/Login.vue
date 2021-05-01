@@ -13,9 +13,9 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" @click="submitForm('ruleForm')">立即登录</el-button>
-            <el-button @click="resetForm('ruleForm')">重置</el-button>
-            <el-link type="primary" href="/Register" style="float: right"><el-button>注册</el-button></el-link>
+            <el-button type="primary" @click="submitForm(ruleForm)">立即登录</el-button>
+            <el-button @click="resetForm(ruleForm)">重置</el-button>
+            <el-link type="primary" href="/#/register" style="float: right"><el-button>注册</el-button></el-link>
           </el-form-item>
         </el-form>
 
@@ -39,8 +39,8 @@ export default {
   data() {
     return {
       ruleForm: {
-        username: 'wch',
-        password: '111111'
+        username: 'wch01',
+        password: '123456'
       },
       rules: {
         username: [
@@ -55,34 +55,45 @@ export default {
     };
   },
   methods: {
-    submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
-            if (valid) {
-                const _this = this
-                this.$axios.post('/login',this.ruleForm).then(res => {
-                    const jwt = res.headers['authorization'] //获取头文件中的authorization信息
-                    const userInfo = res.data.data
-
-                    //把数据共享出去
-                    console.log(userInfo)
-                    _this.$store.commit("SET_TOKEN",jwt)
-                    _this.$store.commit("SET_USERINFO",userInfo)
-
-                    //获取
-                    console.log(_this.$store.getters.getUser)
-
-                    //跳转
-                    _this.$router.push("/user")
-                })
-            } else {
-                console.log('error submit!!');
-                return false;
-            }
+    //按钮点击测试
+    submitForm (loginForm) {
+      this.axios
+        .post('/api/login', {//用post方法传 输入框输入的用户名和密码findindex
+          username: loginForm.username,
+          password: loginForm.password,
+        })
+        .then((response) => {//回调函数当post成功后执行
+          console.log(response)
+          if (response.data.code === 200) {//如果后端返回的状态码是200
+            this.open2();//调用第一个弹窗方法表示登录成功
+            this.$router.replace({//路由替换为index
+              path: '/cell'
+            });
+          }
+          if (response.data.code === 400 ) {
+            this.open3()
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+          this.open3();
         });
     },
     resetForm(formName) {
-        this.$refs[formName].resetFields();
-    }
+      this.$refs[formName].resetFields();
+    },
+    open2() {
+      this.$message({
+        message: '登陆成功！',
+        type: 'success'
+      });
+    },
+    open3() {
+      this.$message({
+        message: '账号或密码错误',
+        type: 'warning'
+      });
+    },
   }
 }
 </script>

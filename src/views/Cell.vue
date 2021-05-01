@@ -2,7 +2,7 @@
   <div class="cell">
     <Header></Header>
     <a>cell cell cell cell</a>
-    <el-button type="primary" @click="clickTest('ruleForm')">主要按钮</el-button>
+    <el-button type="primary" @click="clickTest()">主要按钮</el-button>
     <Footer></Footer>
   </div>
 </template>
