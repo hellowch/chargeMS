@@ -39,7 +39,9 @@
           </el-table-column>
         </el-table>
       </el-tab-pane>
-      <el-tab-pane label="月度消费" name="thrid">月度消费</el-tab-pane>
+      <el-tab-pane label="月度消费" name="thrid">
+        <SumOrder></SumOrder>
+      </el-tab-pane>
     </el-tabs>
     <Footer></Footer>
   </div>
@@ -48,11 +50,13 @@
 <script>
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import SumOrder from '../components/SumOrder'
 export default {
   // 用户界面
   components: {
     Header,
-    Footer
+    Footer,
+    SumOrder,
   },
   name: 'User',
   data(){
@@ -108,7 +112,7 @@ export default {
         }
       })
         .then((responce) => {
-          console.log(responce.data.data)
+          // console.log(responce.data.data)
           var res = responce.data.data
           this.tableData = res
         })

@@ -7,14 +7,12 @@ import 'lib-flexible/flexible'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 // Vue.use(VueAxios, axios)
 //全局配置url链接
-// axios.defaults.baseURL='https://gank.io';
 axios.defaults.baseURL='http://localhost:3000';
 // axios.defaults.baseURL='http://weichenhao.cn:3000';
 // 挂载到vue原型链上

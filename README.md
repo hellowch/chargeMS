@@ -31,5 +31,5 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ### 使用技术
 ```
-flexible自适应  element-ui框架  axios发送http请求（不一定做后端）
+flexible自适应  element-ui框架  axios发送http请求  echarts画图
 ```
