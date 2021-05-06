@@ -4,7 +4,7 @@
     <el-card class="box-card">
       <div slot="header" class="clearfix">
         <span>个人信息</span>
-        <el-button style="float: right; padding: 3px 0" type="text">修改</el-button>
+        <el-button style="float: right; padding: 3px 0" type="text" ><el-link href="/#/userchange">修改</el-link></el-button>
       </div>
       <div class="text item">
         <div>昵称：{{ruleForm.name}}</div>
@@ -62,9 +62,10 @@ export default {
       })
       .then((responce) => {
         console.log(responce.data.data)
-        this.ruleForm.carBrand = responce.data.data.Carbrand
-        this.ruleForm.carModel = responce.data.data.Carmodel
-        this.ruleForm.buyTime = responce.data.data.Buytime
+        var res = responce.data.data
+        this.ruleForm.carBrand = res.Carbrand
+        this.ruleForm.carModel = res.Carmodel
+        this.ruleForm.buyTime = res.Buytime.slice(0,10)
       })
       .catch((error) => {
         console.log(error)

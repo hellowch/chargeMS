@@ -6,6 +6,7 @@ import Charger from '../views/Charger'
 import Community from '../views/Community'
 import User from '../views/User'
 import Register from '../views/Register'
+import Userchange from '../views/Userchange'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
+    },
+    {
+      path: '/userchange',
+      name: 'Userchange',
+      component: Userchange
     },
     {
       path: '/register',
