@@ -15,6 +15,32 @@
         <div>购入时间：{{ruleForm.buyTime}}</div>
       </div>
     </el-card>
+    <el-tabs v-model="activeName" >
+      <el-tab-pane label="社区管理" name="first">社区管理</el-tab-pane>
+      <el-tab-pane label="历史订单" name="second">
+        <el-table
+          :data="tableData"
+          stripe
+          style="width: 100%"
+        size="mini">
+          <el-table-column
+            prop="Amount"
+            label="金额"
+            width="100">
+          </el-table-column>
+          <el-table-column
+            prop="Time"
+            label="时间"
+            width="100">
+          </el-table-column>
+          <el-table-column
+            prop="Length"
+            label="使用时长">
+          </el-table-column>
+        </el-table>
+      </el-tab-pane>
+      <el-tab-pane label="月度消费" name="thrid">月度消费</el-tab-pane>
+    </el-tabs>
     <Footer></Footer>
   </div>
 </template>
@@ -39,16 +65,19 @@ export default {
         carModel: '',
         buyTime: '',
       },
+      activeName: 'first',
+      tableData: [],
     }
   },
   mounted:function(){
     this.getModel();
     this.getUserCar();
+    this.getChargerOrder()
   },
   methods: {
     getModel() {
       var model = JSON.parse(localStorage.getItem('key'));
-      console.log(model);
+      // console.log(model);
       this.ruleForm.name = model.Name;
       this.ruleForm.username = model.Username;
       this.ruleForm.phoneNumber = model.phoneNumber
@@ -61,7 +90,7 @@ export default {
         }
       })
       .then((responce) => {
-        console.log(responce.data.data)
+        // console.log(responce.data.data)
         var res = responce.data.data
         this.ruleForm.carBrand = res.Carbrand
         this.ruleForm.carModel = res.Carmodel
@@ -70,7 +99,23 @@ export default {
       .catch((error) => {
         console.log(error)
       })
-    }
+    },
+    getChargerOrder() {
+      var model = JSON.parse(localStorage.getItem('key'))
+      this.axios.get('/charger/getChargerOrder', {
+        params: {
+          userId: model.Id
+        }
+      })
+        .then((responce) => {
+          console.log(responce.data.data)
+          var res = responce.data.data
+          this.tableData = res
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
   }
 }
 </script>
