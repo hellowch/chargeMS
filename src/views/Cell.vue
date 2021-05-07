@@ -94,7 +94,7 @@ export default {
         }
       })
         .then((responce) => {
-          console.log(responce.data.data)
+          // console.log(responce.data.data)
           var res = responce.data.data
           this.cellForm.id = res.Id;
           this.cellForm.health = res.Health;
