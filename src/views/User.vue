@@ -186,6 +186,7 @@ export default {
           if (response.data.code === 200 && response.data.data === 1) {//如果后端返回的状态码是200
             this.dialogFormVisible = false
             this.getCommunity01()
+            this.form.detail = ''
           }
         })
         .catch((error) => {
