@@ -93,9 +93,9 @@ export default {
           carId: model.Carid
         }
       })
-      .then((responce) => {
+      .then((response) => {
         // console.log(responce.data.data)
-        var res = responce.data.data
+        var res = response.data.data
         this.ruleForm.carBrand = res.Carbrand
         this.ruleForm.carModel = res.Carmodel
         this.ruleForm.buyTime = res.Buytime.slice(0,10)
