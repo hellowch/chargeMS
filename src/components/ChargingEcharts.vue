@@ -8,7 +8,7 @@ export default {
   name: 'ChargingEcharts',
   data() {
     return {
-      chargingRun: false
+      chargingRun: false,
     }
   },
   mounted:function(){
@@ -92,7 +92,6 @@ export default {
         myChart.setOption(option, true);
       }, 2000);
       option && myChart.setOption(option);
-
     },
 
   }

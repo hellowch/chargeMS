@@ -6,7 +6,7 @@
       <div v-else class="baidumap" id="allmap"></div>
     </div>
 
-    <el-button icon="el-icon-full-screen" circle @click="childRun"></el-button>
+    <el-button size="" class="full" icon="el-icon-full-screen" circle @click="childRun"></el-button>
     <Footer></Footer>
   </div>
 </template>
@@ -100,7 +100,16 @@ export default {
 <style scoped>
 .baidumap {
   width: 390px;
-  height: 400px
+  height: 760px
 }
-
+.full{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  bottom: 8%;
+  left: 45%;
+  right: 0px;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+  background-color: #FFFFFF;
+}
 </style>
