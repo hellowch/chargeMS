@@ -8,7 +8,7 @@ export default {
   name: 'ChargingEcharts',
   data() {
     return {
-
+      chargingRun: false
     }
   },
   mounted:function(){
@@ -86,14 +86,13 @@ export default {
       var interval = setInterval(function () {
         option.series[0].pointer.show = false;
         option.series[0].data[0].value += 5;
-        if (option.series[0].data[0].value >= 100) {
+        if (option.series[0].data[0].value === 100) {
           clearInterval(interval)
-          // option.series[0].data[0].value = 60
         }
-        // option.series[0].data[0].value = (Math.random() * 100).toFixed(2) - 0;
         myChart.setOption(option, true);
       }, 2000);
       option && myChart.setOption(option);
+
     },
 
   }

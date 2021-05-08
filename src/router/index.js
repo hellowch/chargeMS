@@ -7,7 +7,7 @@ import Community from '../views/Community'
 import User from '../views/User'
 import Register from '../views/Register'
 import Userchange from '../views/Userchange'
-import ChargingEcharts from '../components/ChargingEcharts'
+import ChargerTrue from '../views/ChargerTrue'
 
 Vue.use(Router)
 
@@ -49,9 +49,9 @@ export default new Router({
       component: Register
     },
     {
-      path: '/chargingEcharts',
-      name: 'ChargingEcharts',
-      component: ChargingEcharts
-    }
+      path: '/chargerTrue/:id',
+      name: 'ChargerTrue',
+      component: ChargerTrue
+    },
   ]
 })

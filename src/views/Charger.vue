@@ -16,7 +16,7 @@
                   <h3>详情：{{model.Details}}</h3>
                   <div style="float: right;margin-bottom: 10%;margin-top: -30%">
                     <el-button style="margin-bottom: 10px" icon="el-icon-tickets" @click="getChargerDetails(model);dialogTableVisible = true" circle></el-button>
-                    <div v-if="model.Usetype===0"><el-button type="success" icon="el-icon-check" circle></el-button></div>
+                    <div v-if="model.Usetype===0"><el-button type="success" icon="el-icon-check" @click="chargerUrl(model)" circle></el-button></div>
                     <div v-else>
                       <el-button type="danger" icon="el-icon-close" circle @click="open3">
                       </el-button>
@@ -94,6 +94,16 @@ export default {
           var res = response.data.data
           this.ruleForms02 = res
         })
+    },
+    chargerUrl(model) {
+      this.$router.push({
+        path: '/chargerTrue',
+        name: 'ChargerTrue',
+        params: {
+          id: model.id,
+          model: model
+        }
+      })
     },
     open3() {
       this.$message({
