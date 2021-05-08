@@ -8,16 +8,30 @@
     <div>
       <el-row :gutter="5">
         <el-col :span="24"  v-for="(model,key) in ruleForms01" :key="key" style="margin-top: 10px">
-            <span @click="getChargerDetails(model)">
+            <span>
               <el-card :body-style="{ padding: '0px' }" shadow="hover" >
-                <div style="padding-bottom: 20px">
-                  <span>距离：{{model.Distance}}</span>
-                  <span>位置：{{model.address}}</span>
-                  <span style="">评价：{{model.Details}}</span>
-                  <span style="">使用：{{model.Usetype}}</span>
+                <div style="padding: 20px">
+                  <h3>位置：{{model.address}}</h3>
+                  <h3>距离：{{model.Distance}}</h3>
+                  <h3>详情：{{model.Details}}</h3>
+                  <div style="float: right;margin-bottom: 10%;margin-top: -30%">
+                    <el-button style="margin-bottom: 10px" icon="el-icon-tickets" @click="getChargerDetails(model);dialogTableVisible = true" circle></el-button>
+                    <div v-if="model.Usetype===0"><el-button type="success" icon="el-icon-check" circle></el-button></div>
+                    <div v-else>
+                      <el-button type="danger" icon="el-icon-close" circle @click="open3">
+                      </el-button>
+                    </div>
+                  </div>
                 </div>
               </el-card>
             </span>
+
+          <el-dialog title="用户评价" :visible.sync="dialogTableVisible" width="90%">
+            <el-card :span="24"  v-for="(model,key) in ruleForms02" :key="key">
+              <h3>{{model.Details}}</h3>
+            </el-card>
+          </el-dialog>
+
         </el-col>
       </el-row>
     </div>
@@ -39,7 +53,9 @@ export default {
   data(){
     return {
       ruleForms01: [],
+      ruleForms02: [],
       selectInput: '',
+      dialogTableVisible: false,
     }
   },
   mounted:function () {
@@ -76,9 +92,15 @@ export default {
       })
         .then((response) => {
           var res = response.data.data
-          this.ruleForms01 = res
+          this.ruleForms02 = res
         })
-    }
+    },
+    open3() {
+      this.$message({
+        message: '该设备已被占用',
+        type: 'warning'
+      });
+    },
   }
 }
 </script>
