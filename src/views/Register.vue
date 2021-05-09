@@ -1,7 +1,7 @@
 <template>
   <div id="register">
     <Header></Header>
-    <el-form :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+    <el-form style="margin-top: 20%;margin-left: -10%;padding-right: 15px" :model="ruleForm" status-icon :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
       <el-form-item label="昵称" prop="name">
         <el-input v-model="ruleForm.name"></el-input>
       </el-form-item>
@@ -94,7 +94,11 @@ export default {
 
     },
     resetForm(formName) {
-      this.$refs[formName].resetFields();
+      this.ruleForm.name = '',
+      this.ruleForm.username = '',
+        this.ruleForm.password = '',
+        this.ruleForm.phoneNumber = '',
+        this.ruleForm.avatar = ''
     },
     open2() {
       this.$message({

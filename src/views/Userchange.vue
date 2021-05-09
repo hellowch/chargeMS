@@ -1,17 +1,17 @@
 <template>
   <div id="userchange">
     <Header></Header>
-    <el-card class="box-card">
+    <el-card style="margin-top: 10px" class="box-card">
       <div slot="header" class="clearfix">
         <span>信息修改界面</span>
       </div>
       <div class="text item">
-        <div>昵称：{{ruleForm.name}}</div>
-        <div>用户名：{{ruleForm.username}}</div>
-        <div>手机号：{{ruleForm.phoneNumber}}</div>
+        <strong>昵称：{{ruleForm.name}}</strong>
+        <h4>用户名：{{ruleForm.username}}</h4>
+        <strong>手机号：{{ruleForm.phoneNumber}}</strong>
       </div>
     </el-card>
-    <el-form ref="form" label-width="80px" size="mini">
+    <el-form style="margin-top: 15px" ref="form" label-width="80px" size="mini">
       <el-form-item label="车的品牌">
         <el-input v-model="ruleForm.carBrand"></el-input>
       </el-form-item>
@@ -24,7 +24,7 @@
         </el-col>
       </el-form-item>
       <el-form-item>
-        <el-button type="primary" @click="setUserCar(ruleForm)">确认修改</el-button>
+        <el-button style="margin-left: -20%" type="primary" @click="setUserCar(ruleForm)">确认修改</el-button>
         <el-button @click="resetForm(ruleForm)">重置</el-button>
       </el-form-item>
     </el-form>

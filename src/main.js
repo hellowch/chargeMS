@@ -12,11 +12,11 @@ Vue.config.productionTip = false
 
 Vue.use(ElementUI)
 // Vue.use(VueAxios, axios)
-//全局配置url链接
-axios.defaults.baseURL='http://localhost:3000';
-// axios.defaults.baseURL='http://weichenhao.cn:3000';
+// 全局配置url链接
+// axios.defaults.baseURL = 'http://localhost:3000'
+axios.defaults.baseURL = 'http://weichenhao.cn:3000'
 // 挂载到vue原型链上
-Vue.prototype.axios = axios;
+Vue.prototype.axios = axios
 
 new Vue({
   router,

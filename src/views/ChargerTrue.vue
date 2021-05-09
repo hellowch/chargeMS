@@ -5,7 +5,12 @@
       <ChargingEcharts v-if="childrun" ref="children"></ChargingEcharts>
       <div v-else class="baidumap" id="allmap"></div>
     </div>
-
+    <div>
+      <h3>剩余时长:{{setModel.time}}s</h3>
+      <h3>已用时长:{{setModel.lengthNew}}min</h3>
+      <h3>目前费用:{{setModel.amountNew}}元</h3>
+      <el-button type="success" @click="setChargerOrder" round>确认付款</el-button>
+    </div>
     <el-button size="" class="full" icon="el-icon-full-screen" circle @click="childRun"></el-button>
     <Footer></Footer>
   </div>
@@ -22,7 +27,7 @@ export default {
     ChargingEcharts,
   },
   name: 'ChargerTrue',
-  data() {
+  data () {
     return {
       childrun: false,
       position_NKYYGS: {
@@ -32,20 +37,34 @@ export default {
         bdLAT: 30.321616,
       },
       chargerId: '',
+      setModel: {
+        time: 16,
+        amountNew: '5',
+        lengthNew: 60
+      }
     }
   },
   created () {
     this.chargerId = this.$route.params.id
   },
-  mounted:function () {
+  mounted: function () {
     this.getChargerId()
-
   },
   methods: {
     childRun () {
       this.childrun = true
+      this.timer = setInterval(()=>{
+        this.setModel.time--
+        if (this.setModel.time===0) {
+          this.$message({
+            message: '充电完毕！！',
+            type: 'success'
+          });
+          clearInterval(this.timer)
+        }
+      },1000)
     },
-    getChargerId() {
+    getChargerId () {
       this.axios.get('/charger/getCharger', {
         params: {
           id: this.chargerId
@@ -62,7 +81,7 @@ export default {
     },
     baiduMap() {
       var map = new BMap.Map('allmap'); // 创建地图实例
-      map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放
+      map.enableScrollWheelZoom(true); // 开启鼠标滚轮缩放
       map.addControl(new BMap.NavigationControl());
       map.addControl(new BMap.ScaleControl());
       map.addControl(new BMap.OverviewMapControl());
@@ -70,8 +89,8 @@ export default {
       // map.setMapStyle({ style: 'midnight' }) //地图风格
 
       map.clearOverlays();
-      //将数据遍历
-      //自定义信息窗口内容
+      // 将数据遍历
+      // 自定义信息窗口内容
       var sContent =
         '<div style="width:300px;"><p style="font-size:16px;font-weight:bold;margin-top: 10px;color:#D07852">' +
         this.position_NKYYGS.Name +
@@ -91,7 +110,44 @@ export default {
       marker.addEventListener('click', function() {
         this.openInfoWindow(infoWindow);
       });
-    }
+    },
+    setChargerOrder () {
+      var model = JSON.parse(localStorage.getItem('key'))
+      this.axios
+        .post('/charger/setChargerOrder', {
+          chargerid: this.chargerId,
+          userid: model.Id,
+          amount: this.setModel.amountNew,
+          length: this.setModel.lengthNew
+        })
+        .then((response) => {
+          console.log(response)
+          if (response.data.code === 200 && response.data.data === 1){
+            this.open2()
+            this.$router.replace({
+              path: '/Charger'
+            })
+          }
+          if (response.data.code != 200 || response.data.data != 1){
+            this.open3()
+          }
+        })
+        .catch((error) => {
+          this.open3()
+        })
+    },
+    open2() {
+      this.$message({
+        message: '付款成功！',
+        type: 'success'
+      });
+    },
+    open3() {
+      this.$message({
+        message: '付款失败',
+        type: 'warning'
+      });
+    },
   }
 
 }

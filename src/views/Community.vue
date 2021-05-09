@@ -1,8 +1,8 @@
 <template>
   <div id="community">
     <Header></Header>
-    <el-tabs v-model="activeName" >
-      <el-tab-pane label="同城交流" name="first">
+    <el-tabs  v-model="activeName" >
+      <el-tab-pane  label="同城交流" name="first">
         <el-row :gutter="5">
           <el-col :span="24"  v-for="(model,key) in ruleForms01" :key="key" style="margin-top: 10px">
             <span>
@@ -21,19 +21,19 @@
           </el-col>
         </el-row>
       </el-tab-pane>
-      <el-tab-pane label="同车分享" name="second">
+      <el-tab-pane  label="同车分享" name="second">
         <el-row :gutter="5">
-          <el-col :span="24"  v-for="(model,key) in ruleForms02" :key="key" style="margin-top: 10px">
+          <el-col :span="24"  v-for="(model2,key) in ruleForms02" :key="key" style="margin-top: 10px">
             <span>
               <el-card :body-style="{ padding: '0px' }" shadow="hover" >
                 <div style="padding: 10px;text-align: left;width: 25%">
-                  <el-avatar size="small" :src="model.Avatar"></el-avatar>
+                  <el-avatar size="small" :src="model2.Avatar"></el-avatar>
                   <div style="float: right;width: 50%">
-                    <span style="float: left">{{model.Name}}</span>
+                    <span style="float: left">{{model2.Name}}</span>
                   </div>
                 </div>
                 <div style="padding-bottom: 20px">
-                  <span style="">{{model.Details}}</span>
+                  <span style="">{{model2.Details}}</span>
                 </div>
 
               </el-card>
@@ -88,7 +88,7 @@ export default {
     this.getCommunity02()
   },
   methods: {
-    getCommunity01() {
+    getCommunity01 () {
       this.axios.get('/community/getCommunity', {
         params: {
         }
@@ -98,7 +98,7 @@ export default {
         this.ruleForms01 = res
       })
     },
-    getCommunity02() {
+    getCommunity02 () {
       var model = JSON.parse(localStorage.getItem('key'))
       var resCar
       this.axios.get('/carApi/getUserCar', {
@@ -108,7 +108,6 @@ export default {
       })
         .then((response) => {
           resCar = response.data.data.Carbrand
-          console.log(resCar)
           this.axios.get('/community/getCarCommunity', {
             params: {
               userCar: resCar
@@ -128,4 +127,10 @@ export default {
 
 <style scoped>
 
+</style>
+
+<style>
+.el-tabs__item {
+  padding: 0 45px;
+}
 </style>

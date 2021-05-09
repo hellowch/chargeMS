@@ -3,7 +3,7 @@
     <Header></Header>
     <el-container id="building">
       <el-main>
-        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+        <el-form style="margin-left: -10%;padding-right: 20px" :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
           <el-form-item label="用户名" prop="username">
             <el-input v-model="ruleForm.username"></el-input>
           </el-form-item>
@@ -13,7 +13,7 @@
           </el-form-item>
 
           <el-form-item>
-            <el-button type="primary" @click="submitForm(ruleForm)">立即登录</el-button>
+            <el-button style="margin-left: -25%" type="primary" @click="submitForm(ruleForm)">立即登录</el-button>
             <el-button @click="resetForm(ruleForm)">重置</el-button>
             <el-link type="primary" href="/#/register" style="float: right"><el-button>注册</el-button></el-link>
           </el-form-item>
