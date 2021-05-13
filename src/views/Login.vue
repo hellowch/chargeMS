@@ -39,7 +39,7 @@ export default {
   data() {
     return {
       ruleForm: {
-        username: 'wch01',
+        username: 'luwei',
         password: '123456'
       },
       rules: {
@@ -55,10 +55,10 @@ export default {
     };
   },
   methods: {
-    //按钮点击测试
+    // 按钮点击测试
     submitForm (loginForm) {
       this.axios
-        .post('/api/login', {//用post方法传 输入框输入的用户名和密码findindex
+        .post('/api/login', {// 用post方法传 输入框输入的用户名和密码findindex
           username: loginForm.username,
           password: loginForm.password,
         })

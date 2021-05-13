@@ -7,6 +7,11 @@
             <div class="block"><el-avatar :size="35" :src="circleUrl"></el-avatar></div>
           </div>
         </el-col>
+        <div style="margin-top: 2%">
+          <b>姓名:&nbsp;{{name}} &nbsp;&nbsp;&nbsp;</b>
+          <b>车型:&nbsp;{{carBrand}} {{carModel}}<br></b>
+          <b>剩余续航里程:（325km）</b>
+        </div>
 <!--        <div class="icon-warp">-->
 <!--          <i class="el-icon-search"></i>-->
 <!--          <i style="margin-left: 10px" class="el-icon-message"></i>-->
@@ -24,18 +29,42 @@ export default {
   name: 'Header',
   data () {
     return {
-      circleUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png'
+      circleUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
+      name: '',
+      carBrand: '',
+      carModel: ''
+
     }
   },
   mounted:function(){
-    this.getavatar();//需要触发的函数
+    this.getavatar() // 需要触发的函数
+    this.getUserCar()
   },
   methods: {
-    getavatar(){
+    getavatar () {
       if (this.$route.path != '/register' && this.$route.path != '/'){
         var model = JSON.parse(localStorage.getItem('key'))
-        // console.log(model.Avatar)
+        // console.log(model)
         this.circleUrl = model.Avatar
+        this.name = model.Name
+      }
+    },
+    getUserCar () {
+      if (this.$route.path != '/register' && this.$route.path != '/'){
+        var model = JSON.parse(localStorage.getItem('key'))
+        this.axios.get('/carApi/getUserCar', {
+          params: {
+            carId: model.Carid
+          }
+        })
+          .then((response) => {
+            var res = response.data.data
+            this.carBrand = res.Carbrand
+            this.carModel = res.Carmodel
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       }
     }
   }

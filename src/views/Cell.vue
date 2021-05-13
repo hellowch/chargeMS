@@ -3,6 +3,15 @@
     <Header></Header>
     <el-card class="box-card">
       <div slot="header" class="clearfix">
+        <span style="font-size: large">汽车展示</span>
+      </div>
+      <div>
+        <img src="../assets/car.png" style="float:left;height: auto;width: 50%;margin-top: 20%"/>
+        <img src="../assets/carDetails.png" style="height: auto;width: 50%"/>
+      </div>
+    </el-card>
+    <el-card class="box-card">
+      <div slot="header" class="clearfix">
         <span style="font-size: large">健康状态</span>
       </div>
       <div style="width: auto;height: 250px;cursor: default" id="first"></div>

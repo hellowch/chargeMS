@@ -1,7 +1,7 @@
 <template>
   <div id="community">
     <Header></Header>
-    <el-tabs  v-model="activeName" >
+    <el-tabs  v-model="activeName">
       <el-tab-pane  label="同城交流" name="first">
         <el-row :gutter="5">
           <el-col :span="24"  v-for="(model,key) in ruleForms01" :key="key" style="margin-top: 10px">
@@ -93,7 +93,7 @@ export default {
         params: {
         }
       })
-      .then((response) => {
+      .then ((response) => {
         var res = response.data.data
         this.ruleForms01 = res
       })
@@ -131,6 +131,6 @@ export default {
 
 <style>
 .el-tabs__item {
-  padding: 0 45px;
+  padding: 0 30px !important;
 }
 </style>

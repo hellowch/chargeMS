@@ -2,15 +2,16 @@
   <div>
     <Header></Header>
     <div>
-      <ChargingEcharts v-if="childrun" ref="children"></ChargingEcharts>
+      <div v-if="childrun">
+        <ChargingEcharts ref="children"></ChargingEcharts>
+        <h3>剩余时长:{{setModel.time}}s</h3>
+        <h3>已用时长:{{setModel.lengthNew}}min</h3>
+        <h3>目前费用:{{setModel.amountNew}}元</h3>
+        <el-button type="success" @click="setChargerOrder" round>确认付款</el-button>
+      </div>
       <div v-else class="baidumap" id="allmap"></div>
     </div>
-    <div>
-      <h3>剩余时长:{{setModel.time}}s</h3>
-      <h3>已用时长:{{setModel.lengthNew}}min</h3>
-      <h3>目前费用:{{setModel.amountNew}}元</h3>
-      <el-button type="success" @click="setChargerOrder" round>确认付款</el-button>
-    </div>
+
     <el-button size="" class="full" icon="el-icon-full-screen" circle @click="childRun"></el-button>
     <Footer></Footer>
   </div>
