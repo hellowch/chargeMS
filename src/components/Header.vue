@@ -8,9 +8,9 @@
           </div>
         </el-col>
         <div style="margin-top: 2%">
-          <b>姓名:&nbsp;{{name}} &nbsp;&nbsp;&nbsp;</b>
-          <b>车型:&nbsp;{{carBrand}} {{carModel}}<br></b>
-          <b>剩余续航里程:（325km）</b>
+          <b>{{name}} &nbsp;&nbsp;&nbsp;</b>
+          <b>{{carBrand}} {{carModel}}<br></b>
+          <b>{{long}}</b>
         </div>
 <!--        <div class="icon-warp">-->
 <!--          <i class="el-icon-search"></i>-->
@@ -32,7 +32,8 @@ export default {
       circleUrl: 'https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png',
       name: '',
       carBrand: '',
-      carModel: ''
+      carModel: '',
+      long: ''
 
     }
   },
@@ -59,8 +60,9 @@ export default {
         })
           .then((response) => {
             var res = response.data.data
-            this.carBrand = res.Carbrand
-            this.carModel = res.Carmodel
+            this.carBrand = '姓名: ' + res.Carbrand
+            this.carModel = '车型: ' + res.Carmodel
+            this.long = '剩余续航里程: ' + '325km'
           })
           .catch((error) => {
             console.log(error)
