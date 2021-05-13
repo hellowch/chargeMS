@@ -47,7 +47,7 @@ export default {
         var model = JSON.parse(localStorage.getItem('key'))
         // console.log(model)
         this.circleUrl = model.Avatar
-        this.name = model.Name
+        this.name = '姓名: ' + model.Name
       }
     },
     getUserCar () {
@@ -60,8 +60,8 @@ export default {
         })
           .then((response) => {
             var res = response.data.data
-            this.carBrand = '姓名: ' + res.Carbrand
-            this.carModel = '车型: ' + res.Carmodel
+            this.carBrand = '车型: ' + res.Carbrand
+            this.carModel = res.Carmodel
             this.long = '剩余续航里程: ' + '325km'
           })
           .catch((error) => {
