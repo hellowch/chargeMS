@@ -156,8 +156,9 @@ export default {
 
 <style scoped>
 .baidumap {
+
   width: 390px;
-  height: 760px
+  height: 750px
 }
 .full{
   width: 50px;
