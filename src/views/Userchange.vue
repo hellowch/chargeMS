@@ -72,7 +72,7 @@ export default {
         carBrand: formName.carBrand,
         carModel: formName.carModel,
         buyTime: formName.buyTime,
-        userId : model.Id,
+        userId: model.Id
       })
         .then((response) => {
           console.log(response)

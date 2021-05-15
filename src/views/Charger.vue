@@ -12,8 +12,9 @@
               <el-card :body-style="{ padding: '0px' }" shadow="hover" >
                 <div style="padding: 20px">
                   <h3>位置：{{model.address}}</h3>
-                  <h3>距离：{{model.Distance}}</h3>
-                  <h3 style="width: 92%">详情：{{model.Details}}</h3>
+                  <h3>距离：{{model.Distance}}米</h3>
+                  <h4>充电单价：{{model.Value}}元/每小时</h4>
+                  <b style="width: 92%;">充电功率：{{model.Details}}</b>
                   <div style="float: right;margin-bottom: 10%;margin-top: -30%">
                     <el-button style="margin-bottom: 10px" type="info" icon="el-icon-tickets" @click="getChargerDetails(model);dialogTableVisible = true" circle></el-button>
                     <div v-if="model.Usetype===0"><el-button type="success" icon="el-icon-check" @click="chargerUrl(model)" circle></el-button></div>
