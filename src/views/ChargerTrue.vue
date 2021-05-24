@@ -9,10 +9,11 @@
         <h3>目前费用:{{setModel.amountNew}}元</h3>
         <el-button type="success" @click="setChargerOrder" round>确认付款</el-button>
       </div>
-      <div v-else class="baidumap" id="allmap"></div>
+      <div v-else>
+        <div class="baidumap" id="allmap"></div>
+        <el-button size="" class="full" icon="el-icon-full-screen" circle @click="childRun"></el-button>
+      </div>
     </div>
-
-    <el-button size="" class="full" icon="el-icon-full-screen" circle @click="childRun"></el-button>
     <Footer></Footer>
   </div>
 </template>
